@@ -8,6 +8,14 @@ const filePath = "./db.json";
 const jsonContent = fs.readFileSync(filePath, 'utf8');
 const DICO = JSON.parse(jsonContent);
 
+/**
+ * Get the RSS feed and send it to the webhook
+ * @param {string} URL The URL of the RSS feed
+ * @param {string} WEBHOOK The URL of the webhook
+ * @param {string} USERNAME The name of the webhook
+ * @param {string} AVATAR_URL The URL of the avatar
+ * @param {string} GUID The path of the GUID file
+ */
 function code(URL, WEBHOOK, USERNAME, AVATAR_URL, GUID) {
     console.log(DICO['USERNAME']);
     fetch(URL)
