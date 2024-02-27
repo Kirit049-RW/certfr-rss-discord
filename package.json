@@ -1,0 +1,25 @@
+{
+  "name": "rss-discord-notification",
+  "version": "1.0.0",
+  "description": "Send a notification on Discord when an alert is issued",
+  "main": "rss.js",
+  "scripts": {
+    "console": "node console.js",
+    "start": "node rss.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Kirit049-RW/rss-discord-notification.git"
+  },
+  "keywords": [
+    "rss",
+    "discord",
+    "notification"
+  ],
+  "author": "Kirito",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kirit049-RW/rss-discord-notification/issues"
+  },
+  "homepage": "https://github.com/Kirit049-RW/rss-discord-notification#readme"
+}
