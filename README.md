@@ -21,6 +21,6 @@ Create a cron job or a task to start the rss file every x minutes, hours, days, 
 The code is currently working for the website https://www.cert.ssi.gouv.fr/ and the rss feed https://www.cert.ssi.gouv.fr/feed/
 
 ### Links
-[Discord server](https://discord.gg/Dwn5Nc6WgR) : If you have any questions, don't hesitate to join the discord server.
+[Discord server](https://discord.gg/Dwn5Nc6WgR) : If you have any questions, don't hesitate to join the Discord server.
 
 [BotMarket Website](https://botmarket.ovh) : Our website where you can find all our bots.
