@@ -17,24 +17,25 @@ const DICO = JSON.parse(jsonContent);
  * @param {string} GUID The path of the GUID file
  */
 function code(URL, WEBHOOK, USERNAME, AVATAR_URL, GUID) {
-    console.log(DICO['USERNAME']);
     fetch(URL)
         .then(response => response.text())
         .then(async (feed) => {
 			const parser = new xml2js.Parser();
 			const xml = await parser.parseStringPromise(feed);
+
+            let count = 0;
             
 			for (const entry of xml.rss.channel[0].item) {
                 const fileContent = fs.readFileSync(GUID, 'utf8');
                 const fileIndex = fileContent.indexOf(entry.guid[0]._);
                 
                 if (fileIndex === -1) {
-                    console.log(entry.title);
+                    count++;
                     
                     fs.appendFileSync(GUID, `\n${entry.guid[0]._}`);
 
                     const data = {
-                        content: `\n# [${entry.title}](${entry.link})\n> *${entry.description[0].replace('<p>', '').replace('</p>', '')}*`,
+                        content: `\n# [${entry.title}](${entry.link})\n> *${entry.description[0].replaceAll('<p>', '').replaceAll('</p>', '')}*`,
                         username: USERNAME,
                         avatar_url: AVATAR_URL
                     };
@@ -48,22 +49,29 @@ function code(URL, WEBHOOK, USERNAME, AVATAR_URL, GUID) {
                     });
 
                     setTimeout(() => {}, 1000);
-                } else {
-                    console.log("Already exist");
                 }
+            }
+
+            if (count !== 0 ) {
+                console.log(`${count} ${count > 1 ? 'posts' : 'post'} sent !`);
+            }
+            else {
+                console.log('No new post !');
             }
         })
         .catch(error => console.error(error));
 
-    console.log('\n');
+    console.log('\n\n');
 }
 
-for (const [k, v] of Object.entries(DICO['URL'])) {
+for (const [k] of Object.entries(DICO['URL'])) {
     const guidFilePath = path.join(__dirname, DICO['GUID'][k]);
     
     if (!fs.existsSync(guidFilePath)) {
         fs.writeFileSync(guidFilePath, '', 'utf8');
     }
+
+    console.log(`[${DICO['USERNAME'][k]}]`);
 
     code(DICO['URL'][k], DICO['WEBHOOK'][k], DICO['USERNAME'][k], DICO['AVATAR'][k], DICO['GUID'][k]);
 }
