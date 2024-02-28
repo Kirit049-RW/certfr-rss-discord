@@ -55,10 +55,10 @@ function code(URL, WEBHOOK, USERNAME, AVATAR_URL, GUID) {
             console.log(`[${USERNAME}]`)
 
             if (count !== 0 ) {
-                console.log(`${count} ${count > 1 ? 'posts' : 'post'} sent !`);
+                console.log(`${count} ${count > 1 ? 'posts' : 'post'} sent!`);
             }
             else {
-                console.log('No new post !');
+                console.log('No new post!');
             }
         })
         .catch(error => console.error(error));
