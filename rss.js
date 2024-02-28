@@ -63,7 +63,7 @@ function code(URL, WEBHOOK, USERNAME, AVATAR_URL, GUID) {
         })
         .catch(error => console.error(error));
 
-    console.log('\n\n');
+    console.log('\n');
 }
 
 for (const [k] of Object.entries(DICO['URL'])) {
