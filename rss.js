@@ -35,7 +35,7 @@ function code(URL, WEBHOOK, USERNAME, AVATAR_URL, GUID) {
                     fs.appendFileSync(GUID, `\n${entry.guid[0]._}`);
 
                     const data = {
-                        content: `\n# [${entry.title}](${entry.link})\n> *${entry.description[0].replaceAll('<p>', '').replaceAll('</p>', '')}*`,
+                        content: `\n# [${entry.title}](${entry.link})\n> ${entry.description[0].replaceAll('<p>', '').replaceAll('</p>', '')}`,
                         username: USERNAME,
                         avatar_url: AVATAR_URL
                     };
