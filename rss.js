@@ -52,6 +52,8 @@ function code(URL, WEBHOOK, USERNAME, AVATAR_URL, GUID) {
                 }
             }
 
+            console.log(`[${USERNAME}]`)
+
             if (count !== 0 ) {
                 console.log(`${count} ${count > 1 ? 'posts' : 'post'} sent !`);
             }
@@ -70,8 +72,6 @@ for (const [k] of Object.entries(DICO['URL'])) {
     if (!fs.existsSync(guidFilePath)) {
         fs.writeFileSync(guidFilePath, '', 'utf8');
     }
-
-    console.log(`[${DICO['USERNAME'][k]}]`);
 
     code(DICO['URL'][k], DICO['WEBHOOK'][k], DICO['USERNAME'][k], DICO['AVATAR'][k], DICO['GUID'][k]);
 }
